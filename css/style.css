@@ -1,0 +1,628 @@
+/* Базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+/* Плавное появление страницы */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Плавное появление контента */
+.page-content {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Плавное появление для секций с задержкой (только если нет других анимаций) */
+section:not(.hero):not(.features) {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+section:not(.hero):not(.features):nth-of-type(1) {
+    animation-delay: 0.1s;
+}
+
+section:not(.hero):not(.features):nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+section:not(.hero):not(.features):nth-of-type(3) {
+    animation-delay: 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Навигация */
+.navbar {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: slideDown 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-menu li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.nav-menu a.active:not(.nav-btn) {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.nav-menu a.active:not(.nav-btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Стиль для активной кнопки в навигации */
+.nav-menu a.nav-btn.active {
+    background: var(--primary-color);
+    color: var(--white) !important;
+    border-color: var(--primary-color);
+}
+
+.nav-btn {
+    background: var(--white);
+    color: var(--primary-color) !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--radius);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.nav-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    color: var(--white) !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.35);
+    border-color: var(--primary-hover);
+}
+
+.nav-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    transition: all 0.15s ease;
+}
+
+/* Стили для кнопки выхода - наследует все стили от .nav-btn, дополнительные стили не нужны */
+.logout-btn {
+    /* Все стили наследуются от .nav-btn, размеры идентичны */
+}
+
+.logout-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.logout-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.logout-btn:hover {
+    background: var(--primary-color);
+    color: var(--white) !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.35);
+    border-color: var(--primary-hover);
+}
+
+.logout-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    transition: all 0.15s ease;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Стили для выбора роли */
+.role-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.role-option {
+    cursor: pointer;
+}
+
+.role-option input {
+    display: none;
+}
+
+.role-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.role-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.role-option input:checked + .role-card::before {
+    left: 100%;
+}
+
+.role-option input:checked + .role-card {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    transform: translateY(-2px);
+}
+
+.role-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.role-option input:checked + .role-card .role-icon {
+    transform: scale(1.1);
+}
+
+.role-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.role-option input:checked + .role-card .role-title {
+    color: var(--primary-color);
+}
+
+.role-description {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.role-option:hover .role-card {
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.role-option input:checked + .role-card .role-description {
+    color: var(--text-dark);
+}
+
+/* Анимация появления */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.role-option {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+.role-option:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.role-option:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .role-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .role-card {
+        padding: 1rem;
+    }
+    
+    .role-icon {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Герой-секция */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #1e40af);
+    color: var(--white);
+    padding: 120px 0 80px;
+    margin-top: 70px;
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+/* Секция преимуществ */
+.features {
+    padding: 80px 0;
+    background: var(--white);
+    animation: fadeInUp 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 2rem 0;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+    }
+}
+
+/* Плавные переходы для контейнеров */
+.container,
+.jobs-container,
+.contacts-container,
+.profile-container,
+.worker-container,
+.admin-container,
+.moder-container,
+.resume-container {
+    animation: fadeInUp 0.5s ease-out 0.1s forwards;
+    opacity: 0;
+}
+
+/* Плавные переходы для карточек и элементов */
+.card,
+.vacancy-card,
+.resume-card,
+.info-card,
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+/* Плавное появление для форм */
+form,
+.auth-form,
+.contact-form {
+    animation: fadeInUp 0.5s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* Плавные переходы для всех ссылок */
+a {
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Плавные переходы для кнопок */
+button,
+.btn {
+    transition: all 0.3s ease;
+}
+
+/* Плавное появление для модальных окон */
+.modal {
+    animation: fadeIn 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    animation: fadeInUp 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.modal.show .modal-content {
+    opacity: 1;
+}
+
+/* Утилиты */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }

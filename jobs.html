@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск работы - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jobs.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Lime</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="jobs.html">Поиск работы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li>
+                    <a href="auth.html" class="nav-btn" id="authBtn">Войти</a>
+                    <a href="profile.html" class="nav-btn" id="profileBtn" style="display: none;">Профиль</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jobs-container">
+        <div class="container">
+            <div class="jobs-header">
+                <h1>Найди работу мечты</h1>
+                <div class="search-section">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Профессия, должность или город...">
+                        <button id="searchBtn" class="btn btn-primary" style="background-color: #2563eb; color: white;">Найти</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jobs-content">
+                <!-- Блок фильтров -->
+                <div class="filters-sidebar" id="filtersSidebar">
+                    <div class="filters-header">
+                        <h3>Фильтры</h3>
+                        <button id="closeFilters" class="btn-close">&times;</button>
+                    </div>
+                    
+                    <!-- Фильтры для вакансий (соискатели) -->
+                    <div id="vacancyFilters">
+                        <div class="filter-group">
+                            <label for="salaryFilter">Зарплата, руб.</label>
+                            <div class="salary-range">
+                                <input type="number" id="salaryMin" placeholder="От">
+                                <span>-</span>
+                                <input type="number" id="salaryMax" placeholder="До">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="regionFilter">Регион</label>
+                            <select id="regionFilter">
+                                <option value="">Все регионы</option>
+                                <option value="moscow">Москва</option>
+                                <option value="spb">Санкт-Петербург</option>
+                                <option value="remote">Удалённая работа</option>
+                                <option value="other">Другие регионы</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Тип занятости</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="employment" value="full" checked>
+                                    <span>Полная</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="employment" value="part">
+                                    <span>Частичная</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="employment" value="remote">
+                                    <span>Удалённая</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="employment" value="project">
+                                    <span>Проектная</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button id="resetFilters" class="btn btn-secondary" style="color: #2563eb;">Сбросить</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Фильтры для резюме (работодатели) -->
+                    <div id="resumeFilters" style="display: none;">
+                        <div class="filter-group">
+                            <label for="resumeSalaryFilter">Желаемая зарплата, руб.</label>
+                            <div class="salary-range">
+                                <input type="number" id="resumeSalaryMin" placeholder="От">
+                                <span>-</span>
+                                <input type="number" id="resumeSalaryMax" placeholder="До">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="resumeExperienceFilter">Опыт работы</label>
+                            <select id="resumeExperienceFilter">
+                                <option value="">Любой опыт</option>
+                                <option value="no">Без опыта</option>
+                                <option value="1-3">1-3 года</option>
+                                <option value="3-5">3-5 лет</option>
+                                <option value="5+">Более 5 лет</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="resumeRegionFilter">Регион</label>
+                            <select id="resumeRegionFilter">
+                                <option value="">Все регионы</option>
+                                <option value="moscow">Москва</option>
+                                <option value="spb">Санкт-Петербург</option>
+                                <option value="remote">Удалённая работа</option>
+                                <option value="other">Другие регионы</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="resumeSkillsFilter">Навыки (через запятую)</label>
+                            <input type="text" id="resumeSkillsFilter" placeholder="Например: JavaScript, React">
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button id="resetResumeFilters" class="btn btn-secondary" style="color: #2563eb;">Сбросить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Основной контент -->
+                <div class="jobs-main">
+                    <div class="jobs-stats">
+                        <span id="jobsCount">Найдено 0 вакансий</span>
+                        <button id="mobileFiltersToggle" class="btn btn-outline mobile-only">
+                            <span>Фильтры</span>
+                            <span class="filter-count" id="mobileFilterCount">0</span>
+                        </button>
+                    </div>
+                    
+                    <div class="vacancies-list" id="vacanciesList">
+                        <!-- Вакансии будут загружаться динамически -->
+                    </div>
+                    
+                    <div class="pagination-container" id="vacanciesPagination"></div>
+                    <div class="pagination-container" id="resumesPagination"></div>
+                    
+                    <div class="load-more">
+                        <button id="loadMoreBtn" class="btn btn-outline" style="display: none;">Загрузить ещё</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно отклика -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Откликнуться на вакансию</h3>
+                <button class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="vacancy-preview" id="vacancyPreview">
+                    <!-- Информация о вакансии -->
+                </div>
+                <div class="form-group">
+                    <label for="resumeSelect">Выберите резюме для отправки</label>
+                    <select id="resumeSelect">
+                        <!-- Резюме будут загружены динамически -->
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button id="confirmApply" class="btn btn-primary">Отправить резюме</button>
+                    <button id="cancelApply" class="btn btn-secondary">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/jobs.js"></script>
+</body>
+</html>

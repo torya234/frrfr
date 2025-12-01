@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель модератора - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/moder.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Lime Moderator</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-tab active" data-tab="resumes">Резюме</a></li>
+                <li><a href="#" class="nav-tab" data-tab="vacancies">Вакансии</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="moder-container">
+        <div class="container">
+            <!-- Статистика -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Резюме на модерации</h3>
+                    <div class="stat-number" id="pendingResumes">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Вакансии на модерации</h3>
+                    <div class="stat-number" id="pendingVacancies">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Одобрено сегодня</h3>
+                    <div class="stat-number" id="approvedToday">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Отклонено сегодня</h3>
+                    <div class="stat-number" id="rejectedToday">0</div>
+                </div>
+            </div>
+
+            <!-- Модерация резюме -->
+            <div class="moder-section active" id="resumesSection">
+                <div class="section-header">
+                    <h2>Модерация резюме</h2>
+                    <div class="section-actions">
+                        <select id="resumeFilter" class="filter-select">
+                            <option value="all">Все статусы</option>
+                            <option value="pending">На модерации</option>
+                            <option value="approved">Одобренные</option>
+                            <option value="rejected">Отклоненные</option>
+                        </select>
+                        <input type="text" id="resumeSearch" placeholder="Поиск резюме..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="moderation-list" id="resumesList">
+                    <!-- Список резюме для модерации -->
+                </div>
+
+                <!-- Пагинация для резюме -->
+                <div class="pagination-container" id="resumesPagination">
+                    <!-- Пагинация будет добавлена динамически -->
+                </div>
+            </div>
+
+            <!-- Модерация вакансий -->
+            <div class="moder-section" id="vacanciesSection">
+                <div class="section-header">
+                    <h2>Модерация вакансий</h2>
+                    <div class="section-actions">
+                        <select id="vacancyFilter" class="filter-select">
+                            <option value="all">Все статусы</option>
+                            <option value="pending">На модерации</option>
+                            <option value="approved">Одобренные</option>
+                            <option value="rejected">Отклоненные</option>
+                        </select>
+                        <input type="text" id="vacancySearch" placeholder="Поиск вакансий..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="moderation-list" id="vacanciesList">
+                    <!-- Список вакансий для модерации -->
+                </div>
+
+                <!-- Пагинация для вакансий -->
+                <div class="pagination-container" id="vacanciesPagination">
+                    <!-- Пагинация будет добавлена динамически -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно просмотра резюме -->
+    <div id="viewResumeModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Просмотр резюме</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="resumePreviewContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="moderManager.rejectResume()">Отклонить</button>
+                <button type="button" class="btn btn-success" onclick="moderManager.approveResume()">Одобрить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно просмотра вакансии -->
+    <div id="viewVacancyModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Просмотр вакансии</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="vacancyPreviewContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="moderManager.rejectVacancy()">Отклонить</button>
+                <button type="button" class="btn btn-success" onclick="moderManager.approveVacancy()">Одобрить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно причины отклонения -->
+    <div id="rejectReasonModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="rejectModalTitle">Причина отклонения</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="rejectReasonForm">
+                    <div class="form-group">
+                        <label for="rejectReason">Укажите причину отклонения:</label>
+                        <textarea id="rejectReason" name="rejectReason" rows="4" placeholder="Опишите причину отклонения..." required></textarea>
+                    </div>
+                    <div class="common-reasons">
+                        <h4>Частые причины:</h4>
+                        <button type="button" class="reason-btn" data-reason="Некорректная контактная информация">Некорректная контактная информация</button>
+                        <button type="button" class="reason-btn" data-reason="Несоответствие формату">Несоответствие формату</button>
+                        <button type="button" class="reason-btn" data-reason="Недостаточно информации">Недостаточно информации</button>
+                        <button type="button" class="reason-btn" data-reason="Нарушение правил платформы">Нарушение правил платформы</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="moderManager.closeRejectModal()">Отмена</button>
+                <button type="button" class="btn btn-danger" onclick="moderManager.confirmRejection()">Подтвердить отклонение</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/moder.js"></script>
+</body>
+</html>

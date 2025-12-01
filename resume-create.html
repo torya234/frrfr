@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание резюме - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/resume.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Lime</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="jobs.html">Поиск работы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="profile.html" class="nav-btn">Профиль</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="resume-create-container">
+        <div class="container">
+            <div class="resume-header">
+                <h1>Создание резюме</h1>
+                <div class="resume-progress">
+                    <div class="progress-step active" data-step="1">Личные данные</div>
+                    <div class="progress-step" data-step="2">Образование</div>
+                    <div class="progress-step" data-step="3">Опыт работы</div>
+                    <div class="progress-step" data-step="4">Навыки</div>
+                    <div class="progress-step" data-step="5">Просмотр</div>
+                </div>
+            </div>
+
+            <form id="resumeForm" class="resume-form">
+                <!-- Шаг 1: Личные данные -->
+                <div class="form-step active" data-step="1">
+                    <h2>Личные данные</h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="resumeFullName">ФИО *</label>
+                            <input type="text" id="resumeFullName" name="fullName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="resumePhone">Телефон *</label>
+                            <input type="tel" id="resumePhone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="resumeEmail">Email *</label>
+                            <input type="email" id="resumeEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="resumeAddress">Адрес проживания</label>
+                            <input type="text" id="resumeAddress" name="address">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаг 2: Образование -->
+                <div class="form-step" data-step="2">
+                    <h2>Образование</h2>
+                    <p class="step-description">Обязательно к заполнению. Можно добавить несколько учебных заведений.</p>
+                    
+                    <div id="educationList">
+                        <div class="education-item">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Учебное заведение *</label>
+                                    <input type="text" name="educationInstitution" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Специальность *</label>
+                                    <input type="text" name="educationSpecialty" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Год окончания *</label>
+                                    <input type="number" name="educationYear" min="1950" max="2030" required>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-remove"  onclick="resumeManager.removeEducation(this)">Удалить</button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-secondary" style="color: #2563eb;" onclick="resumeManager.addEducation()">+ Добавить образование</button>
+                </div>
+
+                <!-- Шаг 3: Опыт работы -->
+                <div class="form-step" data-step="3">
+                    <h2>Опыт работы</h2>
+                    <p class="step-description">Обязательно к заполнению. Если опыта нет, выберите "Нет опыта".</p>
+                    
+                    <div class="form-group">
+                        <label>Есть ли у вас опыт работы? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="hasExperience" value="yes" required>
+                                <span>Да</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="hasExperience" value="no" required>
+                                <span>Нет опыта</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="experienceSection" style="display: none;">
+                        <div id="experienceList">
+                            <div class="experience-item">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Компания *</label>
+                                        <input type="text" name="experienceCompany" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Должность *</label>
+                                        <input type="text" name="experiencePosition" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Период работы *</label>
+                                        <input type="text" name="experiencePeriod" placeholder="Например: 2020-2023" required>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label>Обязанности и достижения</label>
+                                        <textarea name="experienceResponsibilities" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-danger btn-remove" onclick="resumeManager.removeExperience(this)">Удалить</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="resumeManager.addExperience()">+ Добавить место работы</button>
+                    </div>
+                </div>
+
+                <!-- Шаг 4: Навыки -->
+                <div class="form-step" data-step="4">
+                    <h2>Навыки</h2>
+                    <p class="step-description">Добавьте ваши профессиональные и личные навыки.</p>
+                    
+                    <div class="form-group">
+                        <label for="desiredSalary">Желаемая заработная плата</label>
+                        <input type="number" id="desiredSalary" name="desiredSalary" placeholder="Например: 50000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Навыки</label>
+                        <div class="skills-input">
+                            <input type="text" id="skillInput" placeholder="Введите навык и нажмите Enter">
+                            <button type="button" class="btn btn-primary" onclick="resumeManager.addSkill()">Добавить</button>
+                        </div>
+                        <div id="skillsList" class="skills-list">
+                            <!-- Навыки будут добавляться динамически -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаг 5: Просмотр -->
+                <div class="form-step" data-step="5">
+                    <h2>Проверьте данные</h2>
+                    <div id="resumePreview" class="resume-preview">
+                        <!-- Предпросмотр будет генерироваться динамически -->
+                    </div>
+                </div>
+
+                <!-- Навигация по шагам -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none; color: #2563eb;">Назад</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">Далее</button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Сохранить резюме</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/resume.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр резюме - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/resume.css">
+    <link rel="stylesheet" href="css/resume-templates.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Lime</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="jobs.html">Поиск работы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="profile.html" class="nav-btn">Профиль</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="resume-preview-container">
+        <div class="container">
+            <div class="preview-header">
+                <h1>Ваше резюме</h1>
+                <div class="preview-actions">
+                    <div class="template-selector">
+                        <label>Выберите шаблон:</label>
+                        <select id="templateSelect">
+                            <option value="basic">Строгий</option>
+                            <option value="modern">Современный</option>
+                            <option value="creative">Креативный</option>
+                        </select>
+                    </div>
+                    <div class="export-buttons">
+                        <button id="exportPdf" class="btn btn-danger">📄 Скачать PDF</button>
+                        <button id="exportDocx" class="btn btn-primary">📝 Скачать DOCX</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-preview-wrapper">
+                <div id="resumeOutput" class="resume-template basic">
+                    <!-- Резюме будет загружено динамически -->
+                </div>
+            </div>
+
+            <div class="preview-footer">
+                <a href="resume-create.html" class="btn btn-secondary" style="background-color: white; color: #2563eb;">Создать новое резюме</a>
+                <a href="profile.html" class="btn btn-primary" style="background-color: #2563eb; color: white;">Вернуться в профиль</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем библиотеки для экспорта -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
+    <script src="js/main.js"></script>
+    <script src="js/resume-preview.js"></script>
+</body>
+</html>

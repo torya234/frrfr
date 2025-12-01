@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1001",
+        "fio": "Торяник Ксения Александровна",
+        "login": "admin",
+        "username": "admin",
+        "phone": "+7 (123) 456-78-90",
+        "password": "qweqwe",
+        "status": "admin",
+        "registrationDate": "2025-11-15T11:00:00.000Z"
+    },
+    {
+        "id": "1002",
+        "fio": "Торя Ксения Александровна",
+        "login": "moderator",
+        "username": "moderator",
+        "phone": "+7 (123) 456-73-90",
+        "password": "qweqwe",
+        "status": "moderator",
+        "registrationDate": "2025-11-15T11:00:00.000Z"
+    }
+]

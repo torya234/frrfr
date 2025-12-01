@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contacts.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Lime</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="jobs.html">Поиск работы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li>
+                    <a href="auth.html" class="nav-btn" id="authBtn">Войти</a>
+                    <a href="profile.html" class="nav-btn" id="profileBtn" style="display: none;">Профиль</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contacts-container">
+        <div class="container">
+            <h1>Контакты</h1>
+            
+            <div class="contacts-content">
+                <!-- Контактная информация -->
+                <div class="contact-info">
+                    <div class="info-section">
+                        <h2>Контактная информация</h2>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-icon">📞</div>
+                                <div class="info-content">
+                                    <h3>Телефон</h3>
+                                    <p>+7 (495) 123-45-67</p>
+                                    <p class="info-note">График работы: Пн-Пт, 9:00-18:00</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">📧</div>
+                                <div class="info-content">
+                                    <h3>Email</h3>
+                                    <p>support@Lime.ru</p>
+                                    <p class="info-note">Служба поддержки</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">✉️</div>
+                                <div class="info-content">
+                                    <h3>Рабочая почта</h3>
+                                    <p>hr@Lime.ru</p>
+                                    <p class="info-note">Для работодателей</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">📍</div>
+                                <div class="info-content">
+                                    <h3>Адрес офиса</h3>
+                                    <p>г. Москва, ул. Тверская, д. 10</p>
+                                    <p class="info-note">Бизнес-центр "Центральный"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карта -->
+                    <div class="map-section">
+                        <h2>Мы на карте</h2>
+                        <div id="map" class="map-container">
+                            <div class="map-placeholder">
+                                <p>Карта загружается...</p>
+                                <div class="map-fallback">
+                                    <p>📍 г. Москва, ул. Тверская, д. 10</p>
+                                    <p>Ближайшее метро: Тверская, Пушкинская, Чеховская</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <!-- Яндекс Карты API -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=your_api_key&lang=ru_RU" type="text/javascript"></script>
+    <script src="js/contacts.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Lime</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="jobs.html">Поиск работы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="profile.html" class="nav-btn">Профиль</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="container">
+            <h1>Личный кабинет</h1>
+            
+            <!-- Мои резюме -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Мои резюме</h2>
+                    <a href="resume-create.html" class="btn btn-primary">Создать резюме</a>
+                </div>
+                
+                <div class="resumes-table">
+                    <div class="table-header">
+                        <div>ID резюме</div>
+                        <div>Наименование резюме</div>
+                        <div>Дата создания</div>
+                        <div>Действия</div>
+                    </div>
+                    <div class="table-body" id="resumesList">
+                        <!-- Резюме будут загружаться динамически -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Отклики -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Отклики</h2>
+                </div>
+                
+                <div class="applications-table">
+                    <div class="table-header">
+                        <div>Вакансия</div>
+                        <div>Резюме</div>
+                        <div>Дата отклика</div>
+                        <div>Статус</div>
+                    </div>
+                    <div class="table-body" id="applicationsList">
+                        <!-- Отклики будут загружаться динамически -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Блок "Обо мне" -->
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>Обо мне</h2>
+                    <button id="editProfileBtn" class="btn btn-secondary" style="color: #2563eb;">Редактировать</button>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="avatar-section">
+                        <img id="userAvatar" src="images/default-avatar.png" alt="Аватар" class="avatar">
+                        <button id="changeAvatarBtn" class="btn btn-outline">Сменить аватар</button>
+                        <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>ФИО:</label>
+                            <span id="userFullName">Иванов Иван Иванович</span>
+                            <input type="text" id="editFullName" class="edit-input" style="display: none;">
+                        </div>
+                        <div class="info-item">
+                            <label>Дата рождения:</label>
+                            <span id="userBirthDate">01.01.1990</span>
+                            <input type="date" id="editBirthDate" class="edit-input" style="display: none;">
+                        </div>
+                        <div class="info-item">
+                            <label>Телефон:</label>
+                            <span id="userPhone">+7 (999) 999-99-99</span>
+                            <input type="tel" id="editPhone" class="edit-input" style="display: none;">
+                        </div>
+                        <div class="info-item">
+                            <label>Email:</label>
+                            <span id="userEmail">ivanov@example.com</span>
+                            <input type="email" id="editEmail" class="edit-input" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="edit-actions" style="display: none;">
+                    <button id="saveProfileBtn" class="btn btn-primary">Сохранить</button>
+                    <button id="cancelEditBtn" class="btn btn-secondary" style="color: #2563eb;">Отмена</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения удаления резюме -->
+    <div id="confirmDeleteModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="modal-header">
+                <h3>Подтверждение действия</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmDeleteMessage">Вы уверены, что хотите выполнить это действие?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="profileManager.closeConfirmModal()">Отмена</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

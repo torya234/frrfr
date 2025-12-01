@@ -1,0 +1,333 @@
+[
+  {
+    "id": 2001,
+    "title": "Резюме Иванов Иван Иванович - 15.01.2024",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "personal": {
+      "fullName": "Иванов Иван Иванович",
+      "phone": "+7 (999) 123-45-67",
+      "email": "ivanov@example.com",
+      "address": "г. Москва, ул. Ленина, д. 10"
+    },
+    "desiredSalary": 120000,
+    "education": [
+      {
+        "institution": "Московский государственный университет",
+        "specialty": "Прикладная информатика",
+        "year": "2020"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "TechCorp",
+          "position": "Frontend Developer",
+          "period": "2021 - настоящее время",
+          "responsibilities": "Разработка пользовательских интерфейсов на React, оптимизация производительности приложений"
+        }
+      ]
+    },
+    "skills": ["JavaScript", "React", "TypeScript", "HTML5", "CSS3", "Git"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-15T11:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 201,
+    "userFullName": "Иванов Иван Иванович"
+  },
+  {
+    "id": 2002,
+    "title": "Резюме Петрова Мария Сергеевна - 14.01.2024",
+    "createdAt": "2024-01-14T09:00:00.000Z",
+    "personal": {
+      "fullName": "Петрова Мария Сергеевна",
+      "phone": "+7 (999) 234-56-78",
+      "email": "petrova@example.com",
+      "address": "г. Санкт-Петербург, пр. Невский, д. 25"
+    },
+    "desiredSalary": 90000,
+    "education": [
+      {
+        "institution": "Санкт-Петербургский государственный университет",
+        "specialty": "Дизайн",
+        "year": "2019"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "DesignStudio",
+          "position": "UI/UX Designer",
+          "period": "2020 - настоящее время",
+          "responsibilities": "Создание дизайн-концепций, разработка пользовательских интерфейсов, работа с Figma"
+        }
+      ]
+    },
+    "skills": ["Figma", "Adobe XD", "Sketch", "Photoshop", "Illustrator", "UX Research"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-14T10:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 202,
+    "userFullName": "Петрова Мария Сергеевна"
+  },
+  {
+    "id": 2003,
+    "title": "Резюме Сидоров Алексей Дмитриевич - 13.01.2024",
+    "createdAt": "2024-01-13T08:00:00.000Z",
+    "personal": {
+      "fullName": "Сидоров Алексей Дмитриевич",
+      "phone": "+7 (999) 345-67-89",
+      "email": "sidorov@example.com",
+      "address": "г. Москва, ул. Тверская, д. 5"
+    },
+    "desiredSalary": 150000,
+    "education": [
+      {
+        "institution": "Московский институт управления",
+        "specialty": "Менеджмент",
+        "year": "2018"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "StartupInc",
+          "position": "Product Manager",
+          "period": "2019 - настоящее время",
+          "responsibilities": "Управление продуктом, работа с командами разработки, анализ метрик"
+        }
+      ]
+    },
+    "skills": ["Product Management", "Agile", "Scrum", "Analytics", "Jira", "Confluence"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-13T09:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 203,
+    "userFullName": "Сидоров Алексей Дмитриевич"
+  },
+  {
+    "id": 2004,
+    "title": "Резюме Козлова Елена Викторовна - 12.01.2024",
+    "createdAt": "2024-01-12T10:00:00.000Z",
+    "personal": {
+      "fullName": "Козлова Елена Викторовна",
+      "phone": "+7 (999) 456-78-90",
+      "email": "kozlova@example.com",
+      "address": "г. Москва, ул. Арбат, д. 15"
+    },
+    "desiredSalary": 110000,
+    "education": [
+      {
+        "institution": "Московский государственный технический университет",
+        "specialty": "Прикладная математика",
+        "year": "2021"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "DataTech",
+          "position": "Data Analyst",
+          "period": "2021 - настоящее время",
+          "responsibilities": "Анализ данных, создание дашбордов, работа с SQL и Python"
+        }
+      ]
+    },
+    "skills": ["SQL", "Python", "Tableau", "Power BI", "Excel", "Statistics"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-12T11:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 204,
+    "userFullName": "Козлова Елена Викторовна"
+  },
+  {
+    "id": 2005,
+    "title": "Резюме Смирнов Дмитрий Александрович - 11.01.2024",
+    "createdAt": "2024-01-11T09:00:00.000Z",
+    "personal": {
+      "fullName": "Смирнов Дмитрий Александрович",
+      "phone": "+7 (999) 567-89-01",
+      "email": "smirnov@example.com",
+      "address": "г. Москва, ул. Пушкина, д. 20"
+    },
+    "desiredSalary": 140000,
+    "education": [
+      {
+        "institution": "Московский физико-технический институт",
+        "specialty": "Прикладная математика и информатика",
+        "year": "2020"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "CloudSystems",
+          "position": "Backend Developer",
+          "period": "2020 - настоящее время",
+          "responsibilities": "Разработка серверной части приложений, работа с микросервисами, Docker, Kubernetes"
+        }
+      ]
+    },
+    "skills": ["Python", "Java", "Go", "PostgreSQL", "MongoDB", "Docker", "Kubernetes"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-11T10:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 205,
+    "userFullName": "Смирнов Дмитрий Александрович"
+  },{
+    "id": 2006,
+    "title": "Резюме Иванов Иван Иванович - 15.01.2024",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "personal": {
+      "fullName": "Иванов Иван Иванович",
+      "phone": "+7 (999) 123-45-67",
+      "email": "ivanov@example.com",
+      "address": "г. Москва, ул. Ленина, д. 10"
+    },
+    "desiredSalary": 120000,
+    "education": [
+      {
+        "institution": "Московский государственный университет",
+        "specialty": "Прикладная информатика",
+        "year": "2020"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "TechCorp",
+          "position": "Frontend Developer",
+          "period": "2021 - настоящее время",
+          "responsibilities": "Разработка пользовательских интерфейсов на React, оптимизация производительности приложений"
+        }
+      ]
+    },
+    "skills": ["JavaScript", "React", "TypeScript", "HTML5", "CSS3", "Git"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-15T11:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 201,
+    "userFullName": "Иванов Иван Иванович"
+  },{
+    "id": 2007,
+    "title": "Резюме Иванов Иван Иванович - 15.01.2024",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "personal": {
+      "fullName": "Иванов Иван Иванович",
+      "phone": "+7 (999) 123-45-67",
+      "email": "ivanov@example.com",
+      "address": "г. Москва, ул. Ленина, д. 10"
+    },
+    "desiredSalary": 120000,
+    "education": [
+      {
+        "institution": "Московский государственный университет",
+        "specialty": "Прикладная информатика",
+        "year": "2020"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "TechCorp",
+          "position": "Frontend Developer",
+          "period": "2021 - настоящее время",
+          "responsibilities": "Разработка пользовательских интерфейсов на React, оптимизация производительности приложений"
+        }
+      ]
+    },
+    "skills": ["JavaScript", "React", "TypeScript", "HTML5", "CSS3", "Git"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-15T11:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 201,
+    "userFullName": "Иванов Иван Иванович"
+  },{
+    "id": 2008,
+    "title": "Резюме Иванов Иван Иванович - 15.01.2024",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "personal": {
+      "fullName": "Иванов Иван Иванович",
+      "phone": "+7 (999) 123-45-67",
+      "email": "ivanov@example.com",
+      "address": "г. Москва, ул. Ленина, д. 10"
+    },
+    "desiredSalary": 120000,
+    "education": [
+      {
+        "institution": "Московский государственный университет",
+        "specialty": "Прикладная информатика",
+        "year": "2020"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "TechCorp",
+          "position": "Frontend Developer",
+          "period": "2021 - настоящее время",
+          "responsibilities": "Разработка пользовательских интерфейсов на React, оптимизация производительности приложений"
+        }
+      ]
+    },
+    "skills": ["JavaScript", "React", "TypeScript", "HTML5", "CSS3", "Git"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-15T11:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 201,
+    "userFullName": "Иванов Иван Иванович"
+  },{
+    "id": 2009,
+    "title": "Резюме Иванов Иван Иванович - 15.01.2024",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "personal": {
+      "fullName": "Иванов Иван Иванович",
+      "phone": "+7 (999) 123-45-67",
+      "email": "ivanov@example.com",
+      "address": "г. Москва, ул. Ленина, д. 10"
+    },
+    "desiredSalary": 120000,
+    "education": [
+      {
+        "institution": "Московский государственный университет",
+        "specialty": "Прикладная информатика",
+        "year": "2020"
+      }
+    ],
+    "experience": {
+      "hasExperience": true,
+      "items": [
+        {
+          "company": "TechCorp",
+          "position": "Frontend Developer",
+          "period": "2021 - настоящее время",
+          "responsibilities": "Разработка пользовательских интерфейсов на React, оптимизация производительности приложений"
+        }
+      ]
+    },
+    "skills": ["JavaScript", "React", "TypeScript", "HTML5", "CSS3", "Git"],
+    "moderationStatus": "approved",
+    "moderationDate": "2024-01-15T11:00:00.000Z",
+    "moderatorId": 1,
+    "rejectReason": null,
+    "userId": 201,
+    "userFullName": "Иванов Иван Иванович"
+  }
+  
+]
+

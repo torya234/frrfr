@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель - Lime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="admin.html">Lime Admin</a>
+            </div>
+            <button class="nav-btn logout-btn" id="adminLogoutBtn">Выйти</button>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="container">
+            <!-- Управление пользователями -->
+            <div class="admin-section active" id="usersSection">
+                <div class="section-header">
+                    <h2>Управление пользователями</h2>
+                </div>
+
+                <!-- Блок создания модератора -->
+                <div class="create-moderator-block">
+                    <div class="create-moderator-content">
+                        <div class="create-moderator-info">
+                            <h3>Создание модератора</h3>
+                            <p>Создайте нового пользователя со статусом модератора для управления контентом платформы</p>
+                        </div>
+                        <button class="btn-create-moderator" onclick="adminManager.showAddModeratorModal()">
+                            Создать модератора
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Блок поиска и фильтрации -->
+                <div class="search-filter-block">
+                    <div class="search-container">
+                        <input type="text" id="userSearch" placeholder="Поиск пользователей..." class="search-input">
+                    </div>
+                    <div class="filter-container">
+                        <select id="roleFilter" class="filter-select">
+                            <option value="all">Все роли</option>
+                            <option value="jobseeker">Соискатель</option>
+                            <option value="employer">Работодатель</option>
+                            <option value="moderator">Модератор</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="users-table">
+                    <div class="table-header">
+                        <div>ID</div>
+                        <div>ФИО</div>
+                        <div>Логин</div>
+                        <div>Телефон</div>
+                        <div>Роль</div>
+                        <div>Дата регистрации</div>
+                        <div>Действия</div>
+                    </div>
+                    <div class="table-body" id="usersList">
+                        <!-- Список пользователей -->
+                    </div>
+                </div>
+
+                <!-- Пагинация -->
+                <div class="pagination-container" id="paginationContainer">
+                    <!-- Пагинация будет добавлена динамически -->
+                </div>
+            </div>
+
+            <!-- Управление модераторами -->
+            <div class="admin-section" id="moderatorsSection">
+                <div class="section-header">
+                    <h2>Управление модераторами</h2>
+                </div>
+
+                <div class="moderators-table">
+                    <div class="table-header">
+                        <div>ID</div>
+                        <div>ФИО</div>
+                        <div>Логин</div>
+                        <div>Телефон</div>
+                        <div>Дата назначения</div>
+                        <div>Действия</div>
+                    </div>
+                    <div class="table-body" id="moderatorsList">
+                        <!-- Список модераторов -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно добавления модератора -->
+    <div id="addModeratorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Добавить модератора</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="addModeratorForm">
+                    <div class="form-group">
+                        <label for="moderatorFullName">ФИО *</label>
+                        <input type="text" id="moderatorFullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="moderatorUsername">Логин *</label>
+                        <input type="text" id="moderatorUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="moderatorPhone">Телефон *</label>
+                        <input type="tel" id="moderatorPhone" name="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+                        <span class="error-message" id="moderatorPhoneError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="moderatorPassword">Пароль * (минимум 6 символов)</label>
+                        <input type="password" id="moderatorPassword" name="password" required minlength="6">
+                        <span class="error-message" id="moderatorPasswordError"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="adminManager.closeModeratorModal()">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="adminManager.addModerator()">Добавить</button>
+            </div>
+        </div>
+    </div>
+    <!-- Добавьте этот код после существующего модального окна -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="modal-header">
+                <h3>Подтверждение действия</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Вы уверены, что хотите выполнить это действие?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="adminManager.closeConfirmModal()">Отмена</button>
+                <button type="button" class="btn btn-danger" id="confirmActionBtn">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
